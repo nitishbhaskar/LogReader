@@ -1,0 +1,43 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="X-Frame-Options" content="deny">
+    <title>Log Reader</title>
+    <script src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/angular.js"></script>
+    <script src="js/logReader.js"></script>
+    <script src="js/logReaderService.js"></script>
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/styles.css" rel="stylesheet" />
+</head>
+    <body data-ng-app="LogReader">
+        <div class="container sections-wrapper" data-ng-controller="LogReaderController">
+                  <div class="row">
+                      <div class="primary col-md-4">
+                          <section class="about section">
+                              <div class="section-inner">
+                                  <div class="content" data-ng-repeat="file in LogReaderService.Model.fileNames">
+                                      <span data-ng-bind="file.OriginalPath" data-ng-click="LogReaderService.GetFileContents(this.file.OriginalPath)">
+                                
+                                      </span>
+                                  </div><!--//content-->
+                              </div><!--//section-inner-->                 
+                          </section><!--//section-->
+    
+                      </div><!--//primary-->
+                      <div class="secondary col-md-8">
+                          <section class="about section">
+                              <div class="section-inner">
+                                  <h3 data-ng-bind="LogReaderService.Model.currentFile"></h3>
+                                  <div class="content" data-ng-bind="LogReaderService.Model.fileContents">
+                                  </div><!--//content-->
+                              </div><!--//section-inner-->                 
+                          </section><!--//section-->
+                      </div><!--//secondary-->    
+                  </div><!--//row-->
+              </div><!--//masonry-->
+    </body>
+</html>
